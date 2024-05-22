@@ -2,27 +2,21 @@
 
 import { Movie } from '../models/Movie';
 
-type RawMovieData = { //dados brutos
-  id: number;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  overview: string;
-  vote_average: number;
-  genre_ids: number[];
-}
 
-const formatMovie =  (rawData: RawMovieData): Movie => { // Esta função será responsável pela transformação dos dados do filme da API para o modelo de negócios Movie.
-// criando um dado bruto. Como converter um dado bruto em movie no formato js ou ts?
+const formatMovie =  (rawData: any): Movie => { // Esta função será responsável pela transformação dos dados do filme da API para o modelo de negócios Movie.
+// criando um dado bruto. Como converter um dado bruto 'rawmoviedata' em objeto movie no formato js ou ts?
+//A função deve receber um objeto de dados de filme da API como parâmetro e retornar um objeto do modelo de negócios Movie.
 return {
-    id: rawData.id,
+    id: rawData.id, 
     title: rawData.title,
-    poster_path: rawData.poster_path,
     release_year: rawData.release_date,
     overview: rawData.overview,
     vote_average: rawData.vote_average,
     genre_ids: rawData.genre_ids,
+    poster_path: `https://image.tmdb.org/t/p/w500${rawData.poster_path}`
   };
 };
 
 export {formatMovie}
+
+

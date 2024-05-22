@@ -9,3 +9,4 @@ export type Movie = { // o que quero mostrar em tela / renderização
     vote_average: number;
     genre_ids: number[];
 }
+
