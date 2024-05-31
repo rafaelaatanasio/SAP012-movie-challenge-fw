@@ -1,9 +1,9 @@
-<h2>Lista teste</h2>
+<h2>Movie Card Component html Lista teste</h2>
 
-<div *ngFor="let movie of movieList">
-    <div>
-        <h2>{{ movie.title }}</h2>
-        <p>{{ movie.overview }}</p>
-        <img [src]="movie.poster_path" alt="{{ movie.title }}">
-    </div>
-</div>
+<div class="movie-card">
+    <img [src]="movie.poster_path" alt="{{ movie.title }}" class="movie-poster">
+    <h2>{{ movie.title }} ({{ movie.release_year }})</h2>
+    <p>{{ movie.overview }}</p>
+    <p>Rating: {{ movie.vote_average }}</p>
+    <p>Genres: {{ movie.genre_ids.join(', ') }}</p>
+  </div>
