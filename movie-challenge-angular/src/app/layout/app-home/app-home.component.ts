@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIService } from 'src/app/shared/services/API/api.service';
+import { APIService } from 'src/app/shared/services/API/api.service'; // importando pra usar o método getMovies
 import { Movie } from 'src/models/Movie';
 
 @Component({
@@ -10,24 +10,25 @@ import { Movie } from 'src/models/Movie';
 export class AppHomeComponent implements OnInit {
 
 movies!: Movie[];
-isLoading: boolean = true;
+isLoading: boolean = true; // só uma variável pra mostrar que está sendo carregado
+error: string = "";
 
 constructor(private apiService: APIService) { }
 
-//O método ngOnInit() é um dos métodos do ciclo de vida do Angular que é chamado após a
-//inicialização do componente. É um bom lugar para chamar o método getMovies() para buscar
-//os dados dos filmes.
+// o método ngOnInit para chamar o método getMovies assim que o componente é inicializado
 ngOnInit(): void {
   this.getMovies();
 }
 
+// Implemente a lógica para chamar o método `getMovies` do serviço `APIService` para obter os dados dos filmes.
 getMovies(): void {
-  this.apiService.getMovies()
-    .subscribe(movies => {
+  this.isLoading = true; // Garantindo. Define isLoading como true assim que a solicitação for feita  this.apiService.getMovies()
+  this.apiService.getMovies() 
+  .subscribe(movies => {
       this.movies = movies;
     this.isLoading = false; // Marca o carregamento como completo
         },
-        error => {
+        error => { // Exiba um indicador (isLoading) de carregamento enquanto os dados estão sendo obtidos e trate os erros caso ocorram.
           console.error('Erro ao obter os filmes:', error);
           this.isLoading = false; // Marca o carregamento como completo em caso de erro
         }

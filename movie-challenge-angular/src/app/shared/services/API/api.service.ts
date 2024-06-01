@@ -20,16 +20,13 @@ export class APIService { // classe definida
   constructor(private http: HttpClient) { } // Construtor da classe API. Ele recebe uma instância de HttpClient como um parâmetro privado
 // notificadores de acesso public ou private (melhor pra economizar nas declarações)
   // propriedade de instancia http pra usar no método abaixo
-  listar(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`) // buscando array de objeto, qlqr coisa
-  }
-
+  
   // método getMovie
   getMovies(): Observable<Movie[]> { // O método deve retornar um Observable que emite um array de objetos de filme do modelo de negócios
-// Incluir o token da API nos cabeçalhos da requisição HEADERS,ambiente.
+// Incluir o token da API nos cabeçalhos da requisição HEADERS, recuperado do carregador de configuração de ambiente.
     const headers = new HttpHeaders().set('Authorization', `Bearer ${environment.TOKEN_API}`);
     // aqui faço uma requisição HTTP GET para a URL da API e retorna um Observable de um array de Movie
-    //  Utilizar o cliente HTTP para realizar uma requisição GET para /discover/movie do The Movie DB.
+    //  Utilizar o cliente HTTP para realizar uma requisição/método GET para /discover/movie do The Movie DB.
     return this.http.get<{ results: any[] }>(`${this.apiUrl}/discover/movie`, { headers }) 
       .pipe(
         map(response => response.results.map(rawData => formatMovie(rawData)))

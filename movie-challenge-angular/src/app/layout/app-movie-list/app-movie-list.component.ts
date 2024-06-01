@@ -8,6 +8,6 @@ import { Movie } from 'src/models/Movie';
 })
 export class AppMovieListComponent {
 
-@Input() movies!: Movie[];// Declaração do input movies do tipo Movie[]
+@Input() movies!: Movie[];// Propriedade de entrada chamada movies. Declaração do input movies do tipo Movie[]
 
 }

@@ -1,7 +1,26 @@
-<p>app-home works! APP MOVIE LIST</p>
-
-
-<div *ngIf="movies">
-    <app-movie-list [movies]="movies"></app-movie-list>
+<div class="container">
+    <h1>Filmes</h1>
+    
+    <div *ngIf="isLoading" class="loading-spinner">
+      <!-- Aqui você pode adicionar o seu spinner -->
+      <!-- Por exemplo, um ícone de carregamento ou um spinner animado -->
+      <!-- Por enquanto, usaremos um texto simples -->
+      Carregando...
+    </div>
+  
+    <div *ngIf="!isLoading && !error" class="movie-list">
+      <!-- Aqui você pode iterar sobre os filmes e exibi-los -->
+      <!-- Por exemplo, usando ngFor -->
+      <div *ngFor="let movie of movies" class="movie-card">
+        <img [src]="movie.poster_path" alt="{{ movie.title }}" class="movie-poster">
+        <h2>{{ movie.title }} ({{ movie.release_date }})</h2>
+        <p>Rating: {{ movie.vote_average }}</p>
+        <p>Genres: {{ movie.genre_ids.join(', ') }}</p>
+      </div>
+    </div>
+  
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
   </div>
   
