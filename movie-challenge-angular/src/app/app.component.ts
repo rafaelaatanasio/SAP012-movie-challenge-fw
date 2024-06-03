@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { APIService } from 'src/app/shared/services/API/api.service';
 import { Movie } from 'src/models/Movie';
+import { APIService } from './shared/services/API/api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,14 @@ import { Movie } from 'src/models/Movie';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  movies: Movie[] = [];
+  movies: Movie[] = []; // defina a propriedade `movies` na sua classe `AppComponent`.
 
   constructor(private apiService: APIService) { }
 
   ngOnInit(): void {
-    this.apiService.getMovies().subscribe(
-      (data: Movie[]) => {
-        this.movies = data;
+    this.apiService.getMovies({ filters: { page: 1 } }).subscribe( // informando o parâmetro
+    (response) => {  // O `subscribe` espera um objeto que contém `metaData` e `movies`,
+        this.movies;
       },
       (error) => {
         console.error('Erro ao buscar filmes:', error);

@@ -3,6 +3,10 @@
     margin: 0 auto;
     padding: 20px;
   }
+
+  .container > h1 {
+    background-color: pink;
+  }
   
   .loading-spinner {
     text-align: center;

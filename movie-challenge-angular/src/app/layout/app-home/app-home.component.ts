@@ -23,9 +23,9 @@ ngOnInit(): void {
 // Implemente a lógica para chamar o método `getMovies` do serviço `APIService` para obter os dados dos filmes.
 getMovies(): void {
   this.isLoading = true; // Garantindo. Define isLoading como true assim que a solicitação for feita  this.apiService.getMovies()
-  this.apiService.getMovies() 
+  this.apiService.getMovies({ filters: { page: 1 } }) // passando o argumento pra dentro do método
   .subscribe(movies => {
-      this.movies = movies;
+      this.movies = movies.movies; // acessando a propriedade 'movies' dentro do objeto
     this.isLoading = false; // Marca o carregamento como completo
         },
         error => { // Exiba um indicador (isLoading) de carregamento enquanto os dados estão sendo obtidos e trate os erros caso ocorram.
