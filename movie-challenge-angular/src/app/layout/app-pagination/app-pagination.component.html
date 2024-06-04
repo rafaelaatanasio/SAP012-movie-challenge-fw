@@ -2,6 +2,10 @@
 destacado corretamente de acordo com a página atual. -->
 
    <div class="pagination">
+    <!--  Desabilitar a navegação para páginas inválidas:
+ Desabilitar o botão "Anterior" se a página atual for a primeira página.
+ Desabilitar o botão "Próximo" se a página atual for a última página.
+-->
      <button (click)="selectPage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
      
      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">

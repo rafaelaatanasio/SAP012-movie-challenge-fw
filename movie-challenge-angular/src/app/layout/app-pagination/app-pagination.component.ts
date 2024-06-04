@@ -16,6 +16,9 @@ export class AppPaginationComponent {
   // emite um evento quando clicado no botão de nova página
 
   // Método para lidar com a seleção de página
+  //  Manipulação do evento de clique:
+//  Implementar a manipulação de eventos de clique para os botões de paginação.
+//  Emitir o evento onSelectPage com o número da página em que foi clicado.
   selectPage(page: number): void {
     if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
       this.onSelectPage.emit(page);
