@@ -1,3 +1,21 @@
 <div class="app-container">
     <router-outlet></router-outlet>
   </div>
+
+<!-- Certifique-se de que o template do seu componente (`app.component.html`) inclua o
+    componente de paginação e manipule o evento de seleção de página: -->
+
+<div>
+  <h1>Lista de Filmes</h1>
+  <ul>
+    <li *ngFor="let movie of movies">{{ movie.title }}</li>
+  </ul>
+
+    <!-- Uso do Componente de Paginação-->
+
+  <app-pagination 
+    [currentPage]="currentPage" 
+    [totalPages]="totalPages" 
+    (onSelectPage)="onPageSelect($event)">
+  </app-pagination>
+</div>

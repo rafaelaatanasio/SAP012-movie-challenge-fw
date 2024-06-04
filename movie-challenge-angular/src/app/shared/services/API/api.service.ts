@@ -23,7 +23,7 @@ export class APIService { // classe definida
 
   // método getMovie // Modificar o método `getMovies` para aceitar um objeto como parâmetro
   getMovies(params: { filters: { page: number } }): Observable<{ metaData: 
-    { pagination: { currentPage: number, totalPages: number } }, movies: Movie[] }> { // O método deve retornar um Observable que emite um array de objetos de filme do modelo de negócios
+    { pagination: { currentPage: number; totalPages: number; } }, movies: Movie[] }> { // O método deve retornar um Observable que emite um array de objetos de filme do modelo de negócios
    // Ajustar a requisição API para incluir o parâmetro `page`
       const page = params.filters.page || 1; // Definir valor padrão para page
 

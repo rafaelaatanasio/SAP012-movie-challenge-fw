@@ -8,13 +8,15 @@ import { APIService } from './shared/services/API/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppMovieListComponent } from './layout/app-movie-list/app-movie-list.component';
 import { AppHomeComponent } from './layout/app-home/app-home.component';
+import { AppPaginationComponent } from './layout/app-pagination/app-pagination.component';
 
 @NgModule({ // decoretors fazem parte do pacote angular/core
   declarations: [ // metadados
     AppComponent,
     MovieCardComponent,
     AppMovieListComponent,
-    AppHomeComponent
+    AppHomeComponent,
+    AppPaginationComponent
   ],
   imports: [ // metadados, os módulos importados se utilizam aqui ou dentro de um componente acima
     BrowserModule,
